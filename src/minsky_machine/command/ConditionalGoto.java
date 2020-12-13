@@ -3,9 +3,9 @@ package minsky_machine.command;
 import minsky_machine.Counter;
 
 public class ConditionalGoto extends TwoCMCommand {
-    Counter counterToCheck;
+    public Counter counterToCheck;
     public String nextState1;
-    String nextState2;
+    public String nextState2;
 
     public ConditionalGoto(){
         super("");

@@ -1,7 +1,7 @@
 package minsky_machine.command;
 
 public class Goto extends TwoCMCommand {
-    String nextState;
+    public String nextState;
 
     public  Goto(){
         super("");
