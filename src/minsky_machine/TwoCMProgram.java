@@ -7,15 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TwoCMProgram {
-//    enum CommandType {
-//        Counter_plus,
-//        Conditional_goto,
-//        Goto,
-//        Stop
-//    }
-
     @ElementList(name = "listing")
-ArrayList<TwoCMCommand> program=new ArrayList<>();
+    ArrayList<TwoCMCommand> program=new ArrayList<>();
 
     public List<TwoCMCommand> getProgram() {
         return program;

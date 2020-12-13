@@ -3,8 +3,8 @@ package minsky_machine.command;
 import minsky_machine.Counter;
 
 public class CounterPlus extends TwoCMCommand {
-    Counter counter;
-    String nextState;
+    public Counter counter;
+    public String nextState;
 
     public CounterPlus(){
         super("");

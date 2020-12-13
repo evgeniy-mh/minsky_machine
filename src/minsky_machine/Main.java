@@ -3,7 +3,7 @@ package minsky_machine;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -12,8 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("app.fxml"));
         fxmlLoader.setController(new Controller(primaryStage));
-        HBox hBox = fxmlLoader.load();
-        primaryStage.setScene(new Scene(hBox));
+        VBox vBox = fxmlLoader.load();
+        primaryStage.setScene(new Scene(vBox));
         primaryStage.setTitle("Эмулятор машины Минского 2сМ");
         primaryStage.show();
     }

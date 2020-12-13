@@ -6,10 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import minsky_machine.command.ConditionalGoto;
-import minsky_machine.command.CounterPlus;
-import minsky_machine.command.Goto;
-import minsky_machine.command.Stop;
+import minsky_machine.command.*;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -18,6 +15,7 @@ import java.io.File;
 public class Controller {
     private Stage stage;
     private Serializer serializer = new Persister();
+    private TwoCMProgram twoCMProgram;
 
     @FXML
     public Button loadProgramButton;
@@ -31,9 +29,15 @@ public class Controller {
 
     public void loadProgramButton_OnAction(){
         File programFile = showOpenProgramFileDialog();
-        TwoCMProgram twoCMProgram=parseProgramFile(programFile);
+        this.twoCMProgram=parseProgramFile(programFile);
         programList.setItems(FXCollections.observableList(twoCMProgram.program));
-        //testXMLParsing();
+//        testXMLParsing();
+    }
+
+    public void startProgramButton_OnAction(){
+        ProgramExecutor executor = new ProgramExecutor(twoCMProgram.program,0,0,"q1");
+        executor.Run();
+
     }
 
     private File showOpenProgramFileDialog(){
@@ -45,6 +49,22 @@ public class Controller {
     private TwoCMProgram parseProgramFile(File file){
         try {
             TwoCMProgram twoCMProgram = this.serializer.read(TwoCMProgram.class, file);
+            for(TwoCMCommand command: twoCMProgram.program){
+                switch (command.getClass().getSimpleName()){
+                    case "ConditionalGoto":
+                        command.type=CommandType.Conditional_goto;
+                        break;
+                    case "CounterPlus":
+                        command.type=CommandType.Counter_plus;
+                        break;
+                    case "Goto":
+                        command.type=CommandType.Goto;
+                        break;
+                    case "Stop":
+                        command.type=CommandType.Stop;
+                        break;
+                }
+            }
             return twoCMProgram;
         } catch (Exception e) {
             e.printStackTrace();
