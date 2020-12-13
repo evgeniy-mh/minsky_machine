@@ -7,6 +7,10 @@ public class ConditionalGoto extends TwoCMCommand {
     public String nextState1;
     String nextState2;
 
+    public ConditionalGoto(){
+        super("");
+    }
+
     public ConditionalGoto(String startState, Counter counterToCheck, String nextState1, String nextState2) {
         super(startState);
         this.counterToCheck = counterToCheck;

@@ -6,6 +6,10 @@ public class CounterPlus extends TwoCMCommand {
     Counter counter;
     String nextState;
 
+    public CounterPlus(){
+        super("");
+    }
+
     public CounterPlus(String startState, Counter counter, String nextState) {
         super(startState);
         this.counter = counter;

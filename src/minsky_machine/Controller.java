@@ -35,5 +35,11 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            TwoCMProgram read = serializer.read(TwoCMProgram.class, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
