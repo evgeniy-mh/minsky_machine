@@ -1,6 +1,6 @@
 package minsky_machine.command;
 
-import minsky_machine.CommandType;
+import minsky_machine.minsky_executor.CommandType;
 
 public class TwoCMCommand {
     public CommandType type;

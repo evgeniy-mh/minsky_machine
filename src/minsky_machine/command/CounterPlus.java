@@ -1,6 +1,6 @@
 package minsky_machine.command;
 
-import minsky_machine.Counter;
+import minsky_machine.minsky_executor.Counter;
 
 public class CounterPlus extends TwoCMCommand {
     public Counter counter;

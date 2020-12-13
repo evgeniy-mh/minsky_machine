@@ -1,4 +1,4 @@
-package minsky_machine;
+package minsky_machine.minsky_executor;
 
 public enum CommandType {
     Counter_plus,

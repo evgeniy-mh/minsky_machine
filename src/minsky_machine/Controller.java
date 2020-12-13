@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import minsky_machine.command.*;
+import minsky_machine.minsky_executor.CommandType;
+import minsky_machine.minsky_executor.Counter;
+import minsky_machine.minsky_executor.ProgramExecutor;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -36,7 +39,10 @@ public class Controller {
     public TextField BStartValueTextField;
 
     @FXML
-    public ListView programList;
+    public ListView programListView;
+
+    @FXML
+    public ListView executionHistoryListView;
 
     public Controller(Stage stage){
         this.stage=stage;
@@ -44,6 +50,12 @@ public class Controller {
 
     public void initialize() {
         twoCMExecutor = new ProgramExecutor();
+        twoCMExecutor.onStopCallback = () -> {
+            executionHistoryListView.getItems().addAll(twoCMExecutor.executionHistory);
+        };
+
+        executionHistoryListView.getItems().add("История выполнения");
+        executionHistoryListView.refresh();
 
         AStartValueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             ACounterValue.textProperty().setValue(newValue);
@@ -65,7 +77,7 @@ public class Controller {
     public void loadProgramButton_OnAction(){
         File programFile = showOpenProgramFileDialog();
         this.twoCMProgram=parseProgramFile(programFile);
-        programList.setItems(FXCollections.observableList(twoCMProgram.program));
+        programListView.setItems(FXCollections.observableList(twoCMProgram.program));
         twoCMExecutor.program = twoCMProgram.program;
     }
 
@@ -88,7 +100,7 @@ public class Controller {
             for(TwoCMCommand command: twoCMProgram.program){
                 switch (command.getClass().getSimpleName()){
                     case "ConditionalGoto":
-                        command.type=CommandType.Conditional_goto;
+                        command.type = CommandType.Conditional_goto;
                         break;
                     case "CounterPlus":
                         command.type=CommandType.Counter_plus;
@@ -110,12 +122,12 @@ public class Controller {
 
     private void testXMLParsing(){
         TwoCMProgram program=new TwoCMProgram();
-        program.program.add(new ConditionalGoto("q0",Counter.A,"q1","q2"));
+        program.program.add(new ConditionalGoto("q0", Counter.A, "q1", "q2"));
         program.program.add(new CounterPlus("q1",Counter.A,"q5"));
         program.program.add(new Goto("q1","q2"));
         program.program.add(new Stop("q1"));
 
-        programList.setItems(FXCollections.observableList(program.program));
+        programListView.setItems(FXCollections.observableList(program.program));
 
         Serializer serializer = new Persister();
         File result = new File("example.xml");

@@ -1,4 +1,4 @@
-package minsky_machine;
+package minsky_machine.minsky_executor;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import minsky_machine.command.ConditionalGoto;
@@ -6,6 +6,7 @@ import minsky_machine.command.CounterPlus;
 import minsky_machine.command.Goto;
 import minsky_machine.command.TwoCMCommand;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgramExecutor {
@@ -15,16 +16,21 @@ public class ProgramExecutor {
     public SimpleIntegerProperty AValue = new SimpleIntegerProperty();
     public SimpleIntegerProperty BValue = new SimpleIntegerProperty();
     public String currentState;
+    public List<String> executionHistory = new ArrayList<>();
+    public OnStop onStopCallback;
 
     public void Run(){
-        System.out.println(AValue.get());
-        System.out.println(BValue.get());
-
         currentState = startState;
-
         boolean stop=false;
         while (!stop){
             TwoCMCommand currentCommand=program.stream().filter(c->c.startState.equals(currentState)).findFirst().orElse(null);
+            executionHistory.add(String.format(
+                    "Состояние %s A:%s, B:%s",
+                    currentState,
+                    AValue.get(),
+                    BValue.get())
+            );
+
             System.out.println("Executing: "+currentState);
             switch (currentCommand.type){
                 case Counter_plus:
@@ -66,5 +72,6 @@ public class ProgramExecutor {
                     break;
             }
         }
+        onStopCallback.onStop();
     }
 }
