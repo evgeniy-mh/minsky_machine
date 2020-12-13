@@ -3,6 +3,7 @@ package minsky_machine;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,9 +17,16 @@ public class Controller {
     private Stage stage;
     private Serializer serializer = new Persister();
     private TwoCMProgram twoCMProgram;
+    private ProgramExecutor twoCMExecutor;
 
     @FXML
     public Button loadProgramButton;
+
+    @FXML
+    public Label ACounterValue;
+
+    @FXML
+    public Label BCounterValue;
 
     @FXML
     public ListView programList;
@@ -31,13 +39,14 @@ public class Controller {
         File programFile = showOpenProgramFileDialog();
         this.twoCMProgram=parseProgramFile(programFile);
         programList.setItems(FXCollections.observableList(twoCMProgram.program));
+        twoCMExecutor = new ProgramExecutor(twoCMProgram.program, 0, 0, "q1");
+        ACounterValue.textProperty().bind(twoCMExecutor.AValue.asString());
+        BCounterValue.textProperty().bind(twoCMExecutor.BValue.asString());
 //        testXMLParsing();
     }
 
     public void startProgramButton_OnAction(){
-        ProgramExecutor executor = new ProgramExecutor(twoCMProgram.program,0,0,"q1");
-        executor.Run();
-
+        twoCMExecutor.Run();
     }
 
     private File showOpenProgramFileDialog(){

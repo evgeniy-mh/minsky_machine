@@ -1,5 +1,6 @@
 package minsky_machine;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import minsky_machine.command.ConditionalGoto;
 import minsky_machine.command.CounterPlus;
 import minsky_machine.command.Goto;
@@ -13,17 +14,16 @@ public class ProgramExecutor {
     private int startBValue;
     private String startState;
 
-    public int AValue;
-    public int BValue;
+    public SimpleIntegerProperty AValue = new SimpleIntegerProperty();
+    public SimpleIntegerProperty BValue = new SimpleIntegerProperty();
     public String currentState;
-
 
     public ProgramExecutor(List<TwoCMCommand> program, int startAValue, int startBValue, String startState) {
         this.program = program;
         this.startAValue = startAValue;
         this.startBValue = startBValue;
-        this.AValue=startAValue;
-        this.BValue=startBValue;
+        this.AValue.set(startAValue);
+        this.BValue.set(startBValue);
         this.startState=startState;
         this.currentState=startState;
     }
@@ -37,10 +37,10 @@ public class ProgramExecutor {
                 case Counter_plus:
                     switch (((CounterPlus)currentCommand).counter){
                         case A:
-                            AValue++;
+                            AValue.set(AValue.get() + 1);
                             break;
                         case B:
-                            BValue++;
+                            BValue.set(BValue.get() + 1);
                             break;
                     }
                     this.currentState=((CounterPlus)currentCommand).nextState;
@@ -48,16 +48,16 @@ public class ProgramExecutor {
                 case Conditional_goto:
                     switch (((ConditionalGoto)currentCommand).counterToCheck){
                         case A:
-                            if(AValue>0){
-                                AValue--;
+                            if (AValue.get() > 0) {
+                                AValue.set(AValue.get() - 1);
                                 currentState=((ConditionalGoto)currentCommand).nextState1;
                             }else{
                                 currentState=((ConditionalGoto)currentCommand).nextState2;
                             }
                             break;
                         case B:
-                            if(BValue>0){
-                                BValue--;
+                            if (BValue.get() > 0) {
+                                BValue.set(BValue.get() - 1);
                                 currentState=((ConditionalGoto)currentCommand).nextState1;
                             }else{
                                 currentState=((ConditionalGoto)currentCommand).nextState2;
