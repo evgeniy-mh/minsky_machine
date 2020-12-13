@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import minsky_machine.command.ConditionalGoto;
 import minsky_machine.command.CounterPlus;
 import minsky_machine.command.Goto;
@@ -14,16 +16,40 @@ import org.simpleframework.xml.core.Persister;
 import java.io.File;
 
 public class Controller {
+    private Stage stage;
+    private Serializer serializer = new Persister();
+
     @FXML
     public Button loadProgramButton;
 
     @FXML
     public ListView programList;
 
-    public void loadProgramButton_OnAction(){
-        System.out.println("click");
+    public Controller(Stage stage){
+        this.stage=stage;
+    }
 
-        testXMLParsing();
+    public void loadProgramButton_OnAction(){
+        File programFile = showOpenProgramFileDialog();
+        TwoCMProgram twoCMProgram=parseProgramFile(programFile);
+        programList.setItems(FXCollections.observableList(twoCMProgram.program));
+        //testXMLParsing();
+    }
+
+    private File showOpenProgramFileDialog(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Открыть файл с программой 2сМ");
+        return fileChooser.showOpenDialog(this.stage);
+    }
+
+    private TwoCMProgram parseProgramFile(File file){
+        try {
+            TwoCMProgram twoCMProgram = this.serializer.read(TwoCMProgram.class, file);
+            return twoCMProgram;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private void testXMLParsing(){

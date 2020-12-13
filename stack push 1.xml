@@ -1,0 +1,47 @@
+<twoCMProgram>
+   <listing>
+      <twoCMCommand class="minsky_machine.command.ConditionalGoto">
+         <startState>q1</startState>
+         <counterToCheck>A</counterToCheck>
+         <nextState1>q2</nextState1>
+         <nextState2>q3</nextState2>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.CounterPlus">
+         <startState>q2</startState>
+         <counter>B</counter>
+         <nextState>q4</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.Goto">
+         <startState>q3</startState>
+         <nextState>q5</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.ConditionalGoto">
+         <startState>q5</startState>
+         <counterToCheck>B</counterToCheck>
+         <nextState1>q6</nextState1>
+         <nextState2>q7</nextState2>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.CounterPlus">
+         <startState>q6</startState>
+         <counter>A</counter>
+         <nextState>q8</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.CounterPlus">
+         <startState>q8</startState>
+         <counter>A</counter>
+         <nextState>q9</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.Goto">
+         <startState>q9</startState>
+         <nextState>q5</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.CounterPlus">
+         <startState>q7</startState>
+         <counter>A</counter>
+         <nextState>q10</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.Stop">
+         <startState>q10</startState>
+      </twoCMCommand>
+   </listing>
+</twoCMProgram>

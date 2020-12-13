@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("app.fxml"));
-        fxmlLoader.setController(new Controller());
+        fxmlLoader.setController(new Controller(primaryStage));
         HBox hBox = fxmlLoader.load();
         primaryStage.setScene(new Scene(hBox));
         primaryStage.setTitle("Эмулятор машины Минского 2сМ");
