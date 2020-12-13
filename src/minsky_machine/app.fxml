@@ -13,7 +13,7 @@
          <children>
             <Label text="Программа машины" />
             <ListView prefHeight="200.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" text="Загрузить из файла" />
+            <Button fx:id="loadProgramButton" mnemonicParsing="false" onAction="#loadProgramButton_OnAction" text="Загрузить из файла" />
          </children>
       </VBox>
       <Separator orientation="VERTICAL" prefHeight="200.0" />

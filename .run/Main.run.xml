@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="sample.Main" />
+    <option name="MAIN_CLASS_NAME" value="minsky_machine.Main" />
     <module name="minsky_machine" />
     <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Загрузки/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.fxml" />
     <RunnerSettings RunnerId="Run" />

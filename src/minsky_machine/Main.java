@@ -1,8 +1,7 @@
-package sample;
+package minsky_machine;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -11,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("app.fxml"));
         fxmlLoader.setController(new Controller());
         HBox hBox = fxmlLoader.load();
         primaryStage.setScene(new Scene(hBox));
