@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import minsky_machine.command.*;
@@ -29,23 +30,49 @@ public class Controller {
     public Label BCounterValue;
 
     @FXML
+    public TextField AStartValueTextField;
+
+    @FXML
+    public TextField BStartValueTextField;
+
+    @FXML
     public ListView programList;
 
     public Controller(Stage stage){
         this.stage=stage;
     }
 
+    public void initialize() {
+        twoCMExecutor = new ProgramExecutor();
+
+        AStartValueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ACounterValue.textProperty().setValue(newValue);
+        });
+
+        BStartValueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            BCounterValue.textProperty().setValue(newValue);
+        });
+
+        twoCMExecutor.AValue.addListener((observable, oldValue, newValue) -> {
+            ACounterValue.textProperty().setValue(newValue.toString());
+        });
+
+        twoCMExecutor.BValue.addListener((observable, oldValue, newValue) -> {
+            BCounterValue.textProperty().setValue(newValue.toString());
+        });
+    }
+
     public void loadProgramButton_OnAction(){
         File programFile = showOpenProgramFileDialog();
         this.twoCMProgram=parseProgramFile(programFile);
         programList.setItems(FXCollections.observableList(twoCMProgram.program));
-        twoCMExecutor = new ProgramExecutor(twoCMProgram.program, 0, 0, "q1");
-        ACounterValue.textProperty().bind(twoCMExecutor.AValue.asString());
-        BCounterValue.textProperty().bind(twoCMExecutor.BValue.asString());
-//        testXMLParsing();
+        twoCMExecutor.program = twoCMProgram.program;
     }
 
     public void startProgramButton_OnAction(){
+        twoCMExecutor.startState = "q1";
+        twoCMExecutor.AValue.set(Integer.parseInt(AStartValueTextField.textProperty().get()));
+        twoCMExecutor.BValue.set(Integer.parseInt(BStartValueTextField.textProperty().get()));
         twoCMExecutor.Run();
     }
 

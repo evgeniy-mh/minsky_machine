@@ -9,26 +9,19 @@ import minsky_machine.command.TwoCMCommand;
 import java.util.List;
 
 public class ProgramExecutor {
-    private List<TwoCMCommand> program;
-    private int startAValue;
-    private int startBValue;
-    private String startState;
+    public List<TwoCMCommand> program;
+    public String startState;
 
     public SimpleIntegerProperty AValue = new SimpleIntegerProperty();
     public SimpleIntegerProperty BValue = new SimpleIntegerProperty();
     public String currentState;
 
-    public ProgramExecutor(List<TwoCMCommand> program, int startAValue, int startBValue, String startState) {
-        this.program = program;
-        this.startAValue = startAValue;
-        this.startBValue = startBValue;
-        this.AValue.set(startAValue);
-        this.BValue.set(startBValue);
-        this.startState=startState;
-        this.currentState=startState;
-    }
-
     public void Run(){
+        System.out.println(AValue.get());
+        System.out.println(BValue.get());
+
+        currentState = startState;
+
         boolean stop=false;
         while (!stop){
             TwoCMCommand currentCommand=program.stream().filter(c->c.startState.equals(currentState)).findFirst().orElse(null);

@@ -23,7 +23,7 @@
                         <HBox>
                            <children>
                               <Label maxHeight="1.7976931348623157E308" text="Начальное значение счетчика A:" />
-                              <TextField maxWidth="50.0" />
+                              <TextField fx:id="AStartValueTextField" maxWidth="50.0" text="0"/>
                            </children>
                            <padding>
                               <Insets bottom="5.0" />
@@ -32,7 +32,7 @@
                         <HBox>
                            <children>
                               <Label maxHeight="1.7976931348623157E308" text="Начальное значение счетчика B:" />
-                              <TextField maxWidth="50.0" />
+                              <TextField fx:id="BStartValueTextField" maxWidth="50.0" text="0"/>
                            </children>
                         </HBox>
                      </children>
@@ -53,9 +53,9 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Счетчик А" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
-                               <Label fx:id="ACounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                      maxWidth="1.7976931348623157E308" text="123" textAlignment="CENTER"
-                                      VBox.vgrow="ALWAYS">
+                              <Label fx:id="ACounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                                     maxWidth="1.7976931348623157E308" text="0" textAlignment="CENTER"
+                                     VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -65,9 +65,9 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Счетчик В" />
-                               <Label fx:id="BCounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                      maxWidth="1.7976931348623157E308" text="456" textAlignment="CENTER"
-                                      VBox.vgrow="ALWAYS">
+                              <Label fx:id="BCounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                                     maxWidth="1.7976931348623157E308" text="0" textAlignment="CENTER"
+                                     VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="36.0" />
                                  </font>

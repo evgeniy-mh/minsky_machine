@@ -12,6 +12,10 @@
          <nextState>q4</nextState>
       </twoCMCommand>
       <twoCMCommand class="minsky_machine.command.Goto">
+         <startState>q4</startState>
+         <nextState>q1</nextState>
+      </twoCMCommand>
+      <twoCMCommand class="minsky_machine.command.Goto">
          <startState>q3</startState>
          <nextState>q5</nextState>
       </twoCMCommand>
