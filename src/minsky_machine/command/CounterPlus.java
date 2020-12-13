@@ -18,6 +18,6 @@ public class CounterPlus extends TwoCMCommand {
 
     @Override
     public String toString() {
-        return this.startState+this.counter+"+ -> "+this.nextState;
+        return String.format("%s%s+→%s", this.startState, this.counter, this.nextState);
     }
 }

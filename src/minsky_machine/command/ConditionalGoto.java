@@ -17,4 +17,14 @@ public class ConditionalGoto extends TwoCMCommand {
         this.nextState1 = nextState1;
         this.nextState2 = nextState2;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s(%s>0)?(%s-;→%s):(→%s)",
+                this.startState,
+                this.counterToCheck,
+                this.counterToCheck,
+                this.nextState1,
+                this.nextState2);
+    }
 }
