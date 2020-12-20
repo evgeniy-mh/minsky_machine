@@ -2,7 +2,6 @@ package minsky_machine;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -22,9 +21,6 @@ public class Controller {
     private Serializer serializer = new Persister();
     private TwoCMProgram twoCMProgram;
     private ProgramExecutor twoCMExecutor;
-
-    @FXML
-    public Button loadProgramButton;
 
     @FXML
     public Label ACounterValue;
@@ -54,7 +50,6 @@ public class Controller {
             executionHistoryListView.getItems().addAll(twoCMExecutor.executionHistory);
         };
 
-        executionHistoryListView.getItems().add("История выполнения");
         executionHistoryListView.refresh();
 
         AStartValueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -83,6 +78,7 @@ public class Controller {
 
     public void startProgramButton_OnAction(){
         twoCMExecutor.startState = "q1";
+        executionHistoryListView.getItems().clear();
         twoCMExecutor.AValue.set(Integer.parseInt(AStartValueTextField.textProperty().get()));
         twoCMExecutor.BValue.set(Integer.parseInt(BStartValueTextField.textProperty().get()));
         twoCMExecutor.Run();

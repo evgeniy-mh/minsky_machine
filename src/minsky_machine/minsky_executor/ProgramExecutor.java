@@ -21,6 +21,7 @@ public class ProgramExecutor {
 
     public void Run(){
         currentState = startState;
+        executionHistory.clear();
         boolean stop=false;
         while (!stop){
             TwoCMCommand currentCommand=program.stream().filter(c->c.startState.equals(currentState)).findFirst().orElse(null);

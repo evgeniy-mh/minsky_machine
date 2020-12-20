@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <VBox maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" VBox.vgrow="ALWAYS">
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Программа машины">
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Программа машины">
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
+                     <font>
+                        <Font name="System Bold" size="15.0"/>
+                     </font>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <ListView fx:id="programListView" prefHeight="200.0" prefWidth="200.0"/>
-                  <Button fx:id="loadProgramButton" mnemonicParsing="false" onAction="#loadProgramButton_OnAction" text="Загрузить из файла" />
+                  <ListView fx:id="programListView" maxHeight="1.7976931348623157E308" prefWidth="200.0"/>
+                  <Button fx:id="loadProgramButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                          onAction="#loadProgramButton_OnAction" text="Загрузить из файла">
+                     <VBox.margin>
+                        <Insets bottom="5.0"/>
+                     </VBox.margin>
+                  </Button>
                   <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="NEVER">
                      <children>
                         <HBox>
@@ -43,10 +51,13 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Счетчики">
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Счетчики">
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
+                     <font>
+                        <Font name="System Bold" size="15.0"/>
+                     </font>
                   </Label>
                   <Separator prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -77,11 +88,17 @@
                         </VBox>
                      </children>
                   </HBox>
+                  <Label text="История выполнения:"/>
                   <ListView fx:id="executionHistoryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startProgramButton_OnAction" text="Запуск программы" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startProgramButton_OnAction"
+              text="Запуск программы">
+         <VBox.margin>
+            <Insets top="5.0"/>
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>
