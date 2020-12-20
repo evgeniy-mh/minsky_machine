@@ -6,8 +6,8 @@
 <?import javafx.scene.text.Font?>
 <VBox maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+             minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
@@ -16,15 +16,15 @@
                         <Insets bottom="20.0" />
                      </padding>
                      <font>
-                        <Font name="System Bold" size="15.0"/>
+                         <Font name="System Bold" size="15.0"/>
                      </font>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <ListView fx:id="programListView" maxHeight="1.7976931348623157E308" prefWidth="200.0"/>
-                  <Button fx:id="loadProgramButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                          onAction="#loadProgramButton_OnAction" text="Загрузить из файла">
+                   <ListView fx:id="programListView" maxHeight="1.7976931348623157E308" prefWidth="200.0"/>
+                   <Button fx:id="loadProgramButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                           onAction="#loadProgramButton_OnAction" text="Загрузить из файла">
                      <VBox.margin>
-                        <Insets bottom="5.0"/>
+                         <Insets bottom="5.0"/>
                      </VBox.margin>
                   </Button>
                   <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="NEVER">
@@ -32,7 +32,7 @@
                         <HBox>
                            <children>
                               <Label maxHeight="1.7976931348623157E308" text="Начальное значение счетчика A:" />
-                              <TextField fx:id="AStartValueTextField" maxWidth="50.0" text="0"/>
+                               <TextField fx:id="AStartValueTextField" maxWidth="50.0" text="0"/>
                            </children>
                            <padding>
                               <Insets bottom="5.0" />
@@ -41,7 +41,7 @@
                         <HBox>
                            <children>
                               <Label maxHeight="1.7976931348623157E308" text="Начальное значение счетчика B:" />
-                              <TextField fx:id="BStartValueTextField" maxWidth="50.0" text="0"/>
+                               <TextField fx:id="BStartValueTextField" maxWidth="50.0" text="0"/>
                            </children>
                         </HBox>
                      </children>
@@ -56,7 +56,7 @@
                         <Insets bottom="20.0" />
                      </padding>
                      <font>
-                        <Font name="System Bold" size="15.0"/>
+                         <Font name="System Bold" size="15.0"/>
                      </font>
                   </Label>
                   <Separator prefWidth="200.0" />
@@ -65,9 +65,9 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Счетчик А" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="ACounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                     maxWidth="1.7976931348623157E308" text="0" textAlignment="CENTER"
-                                     VBox.vgrow="ALWAYS">
+                               <Label fx:id="ACounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                                      maxWidth="1.7976931348623157E308" text="0" textAlignment="CENTER"
+                                      VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -77,9 +77,9 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Счетчик В" />
-                              <Label fx:id="BCounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                     maxWidth="1.7976931348623157E308" text="0" textAlignment="CENTER"
-                                     VBox.vgrow="ALWAYS">
+                               <Label fx:id="BCounterValue" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                                      maxWidth="1.7976931348623157E308" text="0" textAlignment="CENTER"
+                                      VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -88,16 +88,16 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Label text="История выполнения:"/>
-                  <ListView fx:id="executionHistoryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+                   <Label text="История выполнения:"/>
+                   <ListView fx:id="executionHistoryListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startProgramButton_OnAction"
-              text="Запуск программы">
+       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startProgramButton_OnAction"
+               text="Запуск программы">
          <VBox.margin>
-            <Insets top="5.0"/>
+             <Insets top="5.0"/>
          </VBox.margin>
       </Button>
    </children>
